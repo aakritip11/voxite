@@ -1,0 +1,102 @@
+:root {
+  --PrimaryColor: hsl(199, 100%, 33%);
+  --SecondaryColor: hsl(187, 85%, 43%);
+  --gradientColor: linear-gradient(to right, hsl(187, 85%, 43%), hsl(199, 100%, 33%));
+  --whiteColor: hsl(0, 0%, 100%);
+  --blackColor: hsl(201, 33%, 16%);
+  --textColor: hsl(240, 4%, 36%);
+  --whiteColorDeam: hsl(0, 0%, 93%);
+  --greyText: rgb(190, 190, 190);
+  --inputColor: rgb(239, 239, 239);
+  --bodyColor: rgb(240, 240, 246);
+  --cardBG: rgb(225, 225, 235);
+  --cardHover: rgb(255, 255, 255);
+}
+
+.tour-details.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--bodyColor);
+}
+.tour-details .tour-info {
+  padding: 7rem;
+}
+.tour-details .tour-info h2 {
+  color: var(--blackColor);
+  font-size: 2rem;
+  text-align: left;
+  margin-bottom: 1rem;
+}
+.tour-details .tour-info .tour-details-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+.tour-details .tour-info .tour-details-content .tour-image {
+  width: 100%;
+}
+.tour-details .tour-info .tour-details-content .tour-image img {
+  width: 100%;
+  height: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.tour-details .tour-info .tour-details-content .tour-description h3 {
+  color: var(--blackColor);
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+.tour-details .tour-info .tour-details-content .tour-description p {
+  color: var(--textColor);
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+.tour-details .tour-info .tour-details-content .tour-description .tour-details-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.tour-details .tour-info .tour-details-content .tour-description .tour-details-footer .tour-grade {
+  display: flex;
+  align-items: center;
+}
+.tour-details .tour-info .tour-details-content .tour-description .tour-details-footer .tour-grade span {
+  color: var(--textColor);
+  font-size: 0.875rem;
+  font-weight: 600;
+  background-color: var(--PrimaryColor);
+  color: var(--whiteColor);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.5rem;
+}
+.tour-details .tour-info .tour-details-content .tour-description .tour-details-footer .tour-price {
+  text-align: left;
+  font-size: 2rem;
+  color: var(--blackColor);
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+.tour-details .btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--PrimaryColor);
+  color: var(--whiteColor);
+  font-weight: 600;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+.tour-details .btn:hover {
+  background-color: var(--SecondaryColor);
+}
+.tour-details .btn .icon {
+  font-size: 1.25rem;
+}/*# sourceMappingURL=tours1.css.map */
