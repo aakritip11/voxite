@@ -4,10 +4,11 @@ import { MdOutlineTravelExplore } from "react-icons/md";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { FaUserCircle, FaSignInAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
-
-const Navbar = ({ authenticated }) => {
+import { useNavigate } from "react-router-dom";
+const Navbar = ({ authenticated }, props) => {
   const [active, setActive] = useState("navBar");
   const [showProfileMenu, setShowProfileMenu] = useState(false);
+  const navigate = useNavigate();
 
   const showNav = () => {
     setActive("navBar activeNavbar");
@@ -17,11 +18,25 @@ const Navbar = ({ authenticated }) => {
     setActive("navBar");
   };
 
+  const handleAccount = () => {
+    navigate('/Loge');
+  }
+  const handleAccountPage = () => {
+    navigate('/AccountPage')
+  }
+
   const handleLogout = () => {
-    // Perform logout logic here
-    localStorage.removeItem("token");
-    // Redirect to the appropriate page
-  };
+    fetch("http://localhost:3001/logout",{
+        method:"GET",
+        credentials:"include",
+    }).then((response) => {
+        props.setUsername("");
+        localStorage.removeItem("username");
+        localStorage.removeItem("email");
+        localStorage.removeItem("token");
+        navigate("/");
+    })
+}
 
   const toggleProfileMenu = () => {
     setShowProfileMenu(!showProfileMenu);
@@ -60,25 +75,29 @@ const Navbar = ({ authenticated }) => {
               </Link>
             </li>
             <li className="navItem">
-              {authenticated ? (
+                {/* {props.username? (
+                    <>
+                        <p onClick={handleAccountPage}>Hi, {props.username}</p>
+                        <h3 className="navbar--account" onClick={handleLogout}>
+                            Log Out
+                        </h3>
+                    </>
+                ) : (
+                  <h3 className="navbar--account" onClick={handleAccount}>
+                    Log In
+                  </h3>
+                )} */}
+              {console.log("Hi"+props.username+"Hi")}
+              {props.username? (
                 <div className="dropdown">
-                  <div className="navLink" onClick={toggleProfileMenu}>
-                    <FaUserCircle className="icon" />
-                    Profile
+                  <div className="navLink" onClick={handleAccountPage}>
+                    {/* <FaUserCircle className="icon" /> */}
+                    Hi, {props.username}
                   </div>
-                  {showProfileMenu && (
-                    <div className="dropdown-menu">
-                      <Link to="/Account" className="dropdown-link">
-                        Profile
-                      </Link>
-                      <div
-                        className="dropdown-link"
-                        onClick={handleLogout}
-                      >
-                        Logout
-                      </div>
-                    </div>
-                  )}
+                  <h3 className="navbar--account" onClick={handleLogout}>
+                      Log Out
+                  </h3>
+
                 </div>
               ) : (
                 <Link to="/Loge" className="navLink">

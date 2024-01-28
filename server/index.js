@@ -2,6 +2,7 @@ const express = require("express");
 const index = express();
 index.use(express.json());
 const mongoose = require("mongoose");
+const cookieParser = require("cookie-parser");
 const cors = require("cors");
 index.use(cors({origin: ["http://localhost:3000"]}));
 const bcrypt = require("bcrypt");
@@ -90,6 +91,36 @@ index.post("/userdata", async (req, res) => {
         res.status(500).send({ status: "error", message: "Something went wrong" });
     }
 });
+
+index.get('/checkLoginStatus', async (req, res) => {
+  console.log("Checking login status"+req+" "+req.cookies.token);
+  try {
+    if (req.cookies.token) {
+      const decodedToken = jwt.verify(req.cookies.token, JWT_SECRET);
+      const userId = decodedToken.userId;
+      const user = await User.findById(userId);
+      console.log("Hi "+user);
+      if (user) {
+
+        res.json({ loggedIn: true, username: user.name , email: user.email});
+      } else {
+        res.json({ loggedIn: true, username: "Sakshi Patil" });
+      }
+    } else {
+      res.json({ loggedIn: false, username: "" });
+    }
+  } catch (error) {
+    console.error("Error checking login status:", error);
+    res.status(500).json({ loggedIn: false, username: "" });
+  }
+});
+
+index.get('/logout', (req, res) => {
+  res.cookie("token", "", {
+    httpOnly: true,
+    expires: new Date(0)
+  }).send();
+})
     
 index.post("/booking2", async (req, res) => {
   const { name, address, phone, email, cityf, cityt, date1, date2, country, state, persons } = req.body;

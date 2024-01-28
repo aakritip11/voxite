@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Navbar from './Components/Navbar/Navbar';
 import Home from './Components/Home/Home';
@@ -21,22 +21,29 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 const App = () => {
   const [authenticated, setAuthenticated] = useState(false);
+  const [username,setUsername] = useState("");
+  const [email, setEmail] = useState(" ");
+
+  useEffect(()=>{
+    setUsername(localStorage.getItem("username"));
+    setEmail(localStorage.getItem("email"));
+  },[])
 
   return (
     <Router>
       <ScrollToTop />
-      <Navbar authenticated={authenticated} />
+      <Navbar authenticated={authenticated} username={username} setUsername={setUsername} />
       <Routes>
         <Route path="/" element={<HomeWithMain />} />
         <Route path="/about" element={<About />} />
         <Route path="/tours" element={<Tours />} />
         <Route exact path="/TourDetails/:id" element={<TourDetails  />} />
 
-        <Route path="/loge" element={<Loge setAuthenticated={setAuthenticated} />} />
+        <Route path="/loge" element={<Loge setAuthenticated={setAuthenticated} setUsername={setUsername} setEmail={setEmail}/>} />
         <Route path="/signe" element={<Signe />} />
         <Route
           path="/account"
-          element={<Account authenticated={authenticated} />}
+          element={<Account authenticated={authenticated} setUsername={setUsername} username={username} />}
         />
         <Route path="*" element={<NotFound />} />
         <Route path="/book1" element={<Book1 />} />

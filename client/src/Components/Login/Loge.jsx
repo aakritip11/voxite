@@ -5,7 +5,7 @@ import './login.css';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
 
-const Loge = () => {
+const Loge = (props) => {
   useEffect(() => {
     Aos.init({ duration: 2000 });
   }, []);
@@ -54,9 +54,15 @@ const Loge = () => {
       })
       .then((data) => {
         if (data.token) {
+          setToken(data.token);
+          console.log(data);
           // Store the token in localStorage
           localStorage.setItem("token", data.token);
+          localStorage.setItem("username", data.username);
+          localStorage.setItem("email", email);
           setAuthenticated(true);
+          props.setUsername(data.username);
+          props.setEmail(email);
           navigate("/Account");
         } else {
           throw new Error("Token not received");
