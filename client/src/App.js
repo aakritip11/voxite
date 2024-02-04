@@ -1,76 +1,43 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import Navbar from './Components/Navbar/Navbar';
-import Home from './Components/Home/Home';
-import About from './Components/About/About';
-//import Tours from './Components/Tours/Tours';
-import Main from './Components/Main/Main';
-import {Data, Tours} from './Components/Tours/Tours';
-import Footer from './Components/Footer/Footer';
-import Loge from './Components/Login/Loge';
-import Signe from './Components/Signup/Signe';
-import ScrollToTop from "./ScrollToTop";
-import Account from "./Components/Account/Account";
-import Book1 from './Components/Book/Book1';
-import Book2 from './Components/Book/Book2';
-import Book3 from './Components/Book/Book3'
-import Book4 from './Components/Book/Book4'
-import TourDetails from './Components/Tours/TourDetails';
-
+import Navbar from './Components/Navbar';
+import Footer from './Components/Footer';
+import About from './Components/About';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Tours from './Components/Tours';
+import Data from './Components/Data';
+import TourDetails from './Components/TourDetails';
+import ScrollToTop from './Components/ScrollToTop';
+import HomeWithTours from './Components/HomeWithTours';
+import Login from './Components/Login';
+import Signin from './Components/Signin';
+import AccountDetails from './Components/AccountDetails';
 
-const App = () => {
-  const [authenticated, setAuthenticated] = useState(false);
+function App(){
   const [username,setUsername] = useState("");
+  const [posts, setPosts] = useState([]);
   const [email, setEmail] = useState(" ");
 
   useEffect(()=>{
     setUsername(localStorage.getItem("username"));
     setEmail(localStorage.getItem("email"));
   },[])
-
+  
   return (
     <Router>
       <ScrollToTop />
-      <Navbar authenticated={authenticated} username={username} setUsername={setUsername} />
+      <Navbar username={username} setUsername={setUsername}/>
       <Routes>
-        <Route path="/" element={<HomeWithMain />} />
         <Route path="/about" element={<About />} />
-        <Route path="/tours" element={<Tours />} />
-        <Route exact path="/TourDetails/:id" element={<TourDetails  />} />
-
-        <Route path="/loge" element={<Loge setAuthenticated={setAuthenticated} setUsername={setUsername} setEmail={setEmail}/>} />
-        <Route path="/signe" element={<Signe />} />
-        <Route
-          path="/account"
-          element={<Account authenticated={authenticated} setUsername={setUsername} username={username} />}
-        />
-        <Route path="*" element={<NotFound />} />
-        <Route path="/book1" element={<Book1 />} />
-        <Route path="/book2" element={<Book2 />} />
-        <Route path="/book3" element={<Book3 authenticated={authenticated}/>} />
-        <Route path="/book4" element={<Book4 />} />
+        <Route path="/accountdetails" element={<AccountDetails />} />
+        <Route path="/login" element={<Login setUsername={setUsername} setEmail={setEmail}/>}/>
+        <Route path="/signin" element={<Signin setUsername={setUsername} setEmail={setEmail}/>} />
+        <Route path='/' element={<HomeWithTours initialTourCount={6} Data={Data}/>} />
+        <Route path='/tours' element={<Tours Data={Data}/>} />
+        <Route path='/tourdetails/:id' element={<TourDetails Data={Data}/>} />
       </Routes>
       <Footer />
     </Router>
-  );
-};
-
-const HomeWithMain = () => {
-  return (
-    <>
-      <Home />
-      <Main />
-    </>
-  );
-};
-
-const NotFound = () => {
-  return (
-    <div>
-      <h1>404 - Not Found</h1>
-      <p>The page you're looking for does not exist.</p>
-    </div>
   );
 };
 

@@ -19,88 +19,853 @@
   --inputColor: rgb(239, 239, 239);
   --bodyColor: rgb(240, 240, 246);
   --cardBG: rgb(225, 225, 235);
+  --cardHover: rgb(255, 255, 255);
 }
 
 html{
   scroll-behavior: smooth;
 }
 
-a{
-  text-decoration: none;
+body{
+  background-image: url('Assets/img23.jpg');
+  background-size: cover;  
+  background-position: center;
 }
 
-li{
-  list-style: none;
+/* navbar */
+.navbar{
+  padding-bottom: 2.5rem;
+}
+.navbar--header{
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background: var(--whiteColorDeam);
+  width: 100%;
+  padding: 0.5rem 2rem;
+  box-shadow: 0 2px 4px rgba(2, 15, 29, 0.242);
+  z-index: 1000;
 }
 
-.section{
-  padding: 4rem 0 2rem;
+.navbar--logo{
+  color: var(--blackColor);
+  font-weight: 700;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
 }
 
-.container{
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+.navbar--logoicon {
+  font-size: 25px;
+  color: var(--PrimaryColor);
+  transform: translateY(5px);
 }
 
-.icon{
-  font-size: 2rem;
+.navbar--section{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  width: 80%;
+}
+
+.navbar--lists{
+  width: 40%;
+  padding: 1%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.navbar--item{
+  padding: 0.5rem 0;
+  font-size: 0.9rem;
+  color: var(--textColor);
+  font-weight: 600;
   cursor: pointer;
 }
 
-.flex{
-  display: flex;
-  align-items: center;
+.navbar--item:hover{
+  color: var(--SecondaryColor);
 }
 
-.grid{
-  display: grid;
-  align-items: center;
-}
-
-.btn{
-  padding: 0.6rem 1.5rem;
-  background: var(--PrimaryColor);
+.navbar--btn{
+  margin-left: 2%;
+  background-color: var(--PrimaryColor);
+  color: var(--whiteColor);
   border-radius: 3rem;
   border: none;
   outline: none;
   cursor: pointer;
+  border-color: var(--whiteColorDeam);
+  padding: 0.6rem 1.5rem;
+  font-weight: 600;
+  width: max-content;
 }
 
-.btn a{
+.navbar--btn:hover{
+  background-color: var(--SecondaryColor);
+}
+
+/* footer */
+.footer{
+  position: relative;
+  overflow-y: hidden;
+  padding-bottom: 5rem;
+}
+.footer--videoDiv {
+  height: 100%;
+  width: 100%;
+}
+
+.footer--videoDiv video {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.footer--videoDiv::after {
+  position: absolute;
+  content: '';
+  background: rgba(10, 84, 107, 0.307);
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  mix-blend-mode: multiply;
+}
+
+.footer--container {
+  width: 100%;
+  height: max-content;
+  display: flex;
+  padding: 2rem initial;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: auto;
+  row-gap: 2rem;
+  z-index: 100;
+}
+
+.footer--contactDiv {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  margin-top: 7%;
+  gap: 1rem;
+}
+
+.footer--text {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0rem;
+}
+
+.footer--small {
+  font-size: 13px;
+  font-weight: 400;
   color: var(--whiteColor);
+}
+
+.footer--h2 {
+  color: var(--whiteColor);
+  font-size: 1.8rem;
+}
+
+.footer--inputDiv {
+  width: 100%;
+  gap: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.footer--btn {
+  margin-left: 2%;
+  background-color: var(--PrimaryColor);
+  color: var(--whiteColor);
+  border-radius: 3rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-color: var(--whiteColorDeam);
+  padding: 0.6rem 1.5rem;
+  font-weight: 600;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer--btn:hover {
+  background-color: var(--SecondaryColor);
+}
+
+.footer--sendicon{
+  color: var(--whiteColor);
+  margin-left: 7px;
+}
+
+.footer--card{
+  position: relative;
+  padding: 1rem 1rem 4rem;
+  gap: 2rem;
+  border-radius: 1rem;
+  background: var(--bodyColor);
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: row;
+  overflow: hidden;
+}
+
+.footer--cardintro{
+  display: flex;
+  flex-basis: 50%;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  row-gap: 0.5rem;
+  margin: 2%;
+}
+
+.footer--paragraph{
+  font-size: 14px;
+  color: var(--textColor);
+}
+
+.footer--socials{
+  display: flex;
+  column-gap: 0.5rem;
+}
+
+.footer--socialsicon{
+  color: var(--textColor);
+  font-size: 28px;
+}
+
+.footer--socialsicon:hover{
+  color: var(--PrimaryColor);
+  cursor: pointer;
+}
+
+.footer--links{
+  display: flex;
+  flex-basis: 50%;
+  width: 100%;
+  gap: 1rem;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: space-between;
+  margin: 2%;
+}
+
+.footer--linkGroup{
+  display: flex;
+  flex-direction: column;
+}
+
+.footer--groupTitle{
+  display: block;
+  font-weight: 600;
+  color: var(--blackColor);
+  margin-bottom: 0.5rem;
+}
+
+.footer--list{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 18px;
+  color: var(--textColor);
+  transition: 0.5s ease-in-out;
+  padding-bottom: 10%;
+}
+
+.footer--list:hover{
+  color: var(--PrimaryColor);
+  transform: translateX(7px);
+}
+
+.footer--Div{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--SecondaryColor);
+  padding: 0.5rem 2rem;
+}
+
+/* about */
+.about{
+  background-image: url('Assets/img23.jpg');
+  background-size: cover;  
+  background-position: center;
+}
+
+.about--container{
+  width: 80%;
+  padding: 8rem 1.5rem 3rem;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  row-gap: 3rem;
+  align-items: stretch;
+  justify-content: center;
+  margin: auto;
+  color: var(--blackColor);
+  height: max-content;
+}
+
+.about--textDiv{
+  padding: 2rem 0;
+}
+
+.about--homeTitle{
+  position: relative;
+  font-size: 1.8rem;
+}
+
+.about--h2{
+  color: var(--blackColor);
+}
+
+.about--p p{
+  margin-top: 20px;
+  font-weight: 300;
+  color: var(--textColor);
+}
+
+.about--imageDiv{
+  overflow: hidden;
+  display: flex;
+  gap: 3rem;
+  justify-content: center;
+}
+
+.about--imageDiv img{
+  height: 300px;
+  width: 300px;
+  transition: 2s ease;
+}
+
+.about--imageDiv img:hover{
+  transform: scale(1.1);
+}
+
+/* home */
+.home {
+  position: relative;
+  width: 100%;
+  height: auto;
+  display: flex;
+  overflow: hidden;
+  margin: auto;
+}
+
+.home--videoDiv {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.home--videoDiv video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.home--videoDiv::after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(10, 84, 107, 0.307);
+  mix-blend-mode: multiply;
+}
+
+.home-container {
+  width: 100%;
+  padding: 8rem 1.5rem 3rem;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  row-gap: 3rem;
+  align-items: stretch;
+  justify-content: center;
+  /* margin: auto; */
+  color: var(--whiteColor);
+  height: max-content;
+  /* position: relative; */
+}
+
+.home--textDiv {
+  padding: 3rem 3rem;
+}
+
+.home--textDiv1 {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.home--small {
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.home--title {
+  position: relative;
+  font-size: 2.5rem;
+  display: flex;
+  gap: 0.7rem;
+}
+
+.home--titleh {
+  position: relative;
+  font-size: 2.5rem;
+  border-bottom: 0.3rem solid var(--SecondaryColor);
+}
+
+.home--small1 {
+  font-size: 2.2rem;
+  text-transform: uppercase;
+  font-weight: 800;
+}
+
+.home--title1 {
+  position: relative;
+  font-size: 2rem;
+}
+
+.home--explore{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3%;
+  width: max-content;
+}
+
+.home--explorebtn{
+  position: absolute;
+  background: var(--blackColor);
+  width: max-content;
+  bottom: -2rem;
+  column-gap: 1rem;
+  padding: 0.5rem 1rem;
+  left: 50%;
+  transform: translate(-50%);
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.home--explorebtn:hover{
+  background: var(--textColor);
+}
+
+/* tours */
+.tours {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+}
+
+.tours--secTitle {
+  position: relative;
+  width: max-content;
+  color: var(--blackColor);
+  margin: 6rem 7rem;
+  font-size: 1.2rem;
+}
+
+.tours--title {
+  font-size: 1.5rem;
+  color: var(--textColor);
+}
+
+.tours--title::after {
+  position: absolute;
+  content: '';
+  background: var(--SecondaryColor);
+  height: 5px;
+  width: 11rem;
+  left: 0;
+  bottom: 5px;
+  z-index: -1;
+}
+
+.tours--card{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  padding: 2rem;  
+  max-width: 1300px;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.tours--singleDestination{
+  height: 100%;
+  display: grid;
+  justify-content: center;
+  row-gap: 10px;
+  border-radius: 10px;
+  width: 400px;
+  background: var(--cardBG);
+  box-shadow: 0 2px 4px rgba(140, 140, 141, 0.549);
+  /* overflow: hidden; */
+}
+
+.tours--singleDestination:hover{
+  background: var(--cardHover);
+  box-shadow: 1px 4px 4px rgba(85, 85, 114, 0.549);
+  transition: 0.3s ease;
+}
+
+.tours--imageDiv {
+  height: 30%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.tours--imageDiv img{
+  height: 300px;
+  width: 100%;
+  transition: 2s ease;
+  border-radius: 10px;
+}
+
+.tours--imageDiv:hover img{
+  transform: scale(1.1);
+}
+
+.tours--cardInfo{
+  padding: 1rem;
+}
+
+.tours--destTitle{
+  color: var(--blackColor);
+  font-size: 1.25rem;
+}
+
+.tours--continent{
+  display: flex;
+  gap: 0.5rem;
+}
+
+.tours--locationicon{
+  color: var(--textColor);
+  font-size: 18px;
+}
+
+.tours--name{
+  color: var(--textColor);
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.tours--fees{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-top: 1.5px solid var(--greyText);
+  border-bottom: 1.5px solid var(--greyText);
+}
+
+.tours--grade{
+  color: var(--textColor);
+  max-width: 100px;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tours--price{
+  font-size: 2rem;
+  color: var(--blackColor);
+}
+
+.tours--desc{
+  font-size: 13.5px;
+  color: var(--textColor);
   font-weight: 500;
 }
 
-.btn:hover{
-  background: var(--SecondaryColor);
-}
-
-img, video{
+.tours--btn{
+  margin-left: 2%;
+  margin-top: 1rem;
+  background-color: var(--PrimaryColor);
+  color: var(--whiteColor);
+  border-radius: 3rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-color: var(--whiteColorDeam);
+  padding: 0.6rem 1.5rem;
+  font-weight: 600;
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+
+.tours--btn:hover{
+  background-color: var(--SecondaryColor);
+}
+
+.tours--detailsicon{
+    align-self: center;
+    font-size: 18px;
+}
+
+/* tourdetails */
+.tourdetails{
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+.tourdetails--info{
+  display: flex;
+  flex-direction: column;
+  margin: 5rem;
+  background: var(--cardBG);
+  box-shadow: 0 2px 4px rgba(140, 140, 141, 0.549);
+  border-radius: 10px;
+}
+
+.tourdetails--title{
+  margin: 2rem;
+  color: var(--blackColor);
+  font-size: 2rem;
+}
+
+.tourdetails--content{
+  display: flex;
+  flex-direction: column;
+  margin: 2rem;
+}
+
+.tourdetails--image{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.tourdetails--image img{
+  width: 600px;
   height: auto;
+  background: var(--cardBG);
+  box-shadow: 0 2px 4px rgba(140, 140, 141, 0.549);
+  border-radius: 10px;
 }
 
-input{
-  font-size: 100%;
+.tourdetails--description h3{
+  color: var(--blackColor);
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
 }
 
-body{
-  background: var(--bodyColor);
+.tourdetails--description p{
+  color: var(--textColor);
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
 }
 
-@media screen and (min-width: 1240px) {
-  .container{
-    width: 80% !important;
-    margin: auto !important;
-  }
-
-  .section{
-    padding: 6rem 0 4rem;
-  }
+.tourdetails--fees{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+  
+.tourdetails--price {
+  text-align: left;
+  font-size: 2rem;
+  color: var(--blackColor);
+  font-weight: 600;
 }
 
-@media screen and (min-width: 2560px) {
-  body{
-    zoom: 1.7;
-  }  
+.tourdetails--btn{
+  margin-left: 2%;
+  margin-bottom: 2%;
+  padding: 0.8rem 1.7rem;
+  width: max-content;
+  border-radius: 1rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: var(--whiteColor);
+  border-color: var(--whiteColorDeam);
+  background-color: var(--PrimaryColor);
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+  
+.tourdetails--btn:hover {
+  background-color: var(--SecondaryColor);
+}
+
+/* account */
+.account{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 7rem;
+}
+
+.account--left{
+  display: flex;
+  align-items:center;
+  margin:3%;
+  font-weight: 900;
+  font-size: 2.5rem;
+  color: var(--blackColor);  
+  width: 45%;
+}
+
+.account--right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 45%;
+  border-radius: 1.6rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  margin: 3rem;
+  box-shadow: 0 2px 4px rgba(140, 140, 141, 0.549);
+  background-color: var(--cardBG);
+}
+
+.account--right:hover{
+  background-color: var(--whiteColorDeam);
+}
+
+.account--rightheader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.account--rightheader h1{
+  font-size: 2.5rem;
+  color: var(--blackColor);
+}
+
+.account--gotoreg{
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  color: var(--textColor);
+}
+
+.account--gotoreglink{
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: var(--PrimaryColor);
+  padding-left: 10px;
+}
+
+.account--gotoreglink:hover{
+  color: var(--SecondaryColor);
+  text-decoration: underline;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 3%;
+}
+
+.form-group label {
+  text-align: left;
+  font-weight: bold;
+  padding-bottom: 2%;
+  color: var(--blackColor);
+  font-size: 1.2rem;
+}
+
+.account--btn{
+  width: 100%;
+  background-color: var(--PrimaryColor);
+  color: var(--whiteColor);
+  border: none;
+  padding: 2.5%;
+  border-radius: 2rem;
+  cursor: pointer;
+  margin-top: 3%;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.account--btn:hover{
+  background-color: var(--SecondaryColor);
+}
+
+/* input */
+input[type="text"] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 0.6rem;
+  border-radius: 3rem;
+  border: 1px solid var(--whiteColor);
+}
+
+input[type="password"] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 0.6rem;
+  border-radius: 3rem;
+  border: 1px solid var(--whiteColor);
+}
+
+input[type="email"] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 0.6rem;
+  border-radius: 3rem;
+  border: 1px solid var(--whiteColor);
+}
+
+input::placeholder {
+  color: var(--blackColor);
+  opacity: 0.5;
 }
