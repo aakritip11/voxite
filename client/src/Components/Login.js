@@ -55,6 +55,9 @@ function Login(props) {
                 // data.add("email",email);
                 localStorage.setItem("token", data.token);
                 localStorage.setItem("username", data.username);
+                localStorage.setItem("userphone", data.userphone);
+                localStorage.setItem("usercountry", data.usercountry);
+                localStorage.setItem("usercity", data.usercity);
                 localStorage.setItem("email", email);
             //   setAuthenticated(true);
                 props.setUsername(data.username);
@@ -66,7 +69,7 @@ function Login(props) {
         })
         .catch((error) => {
             console.error(error);
-            alert("Something went wrong during account");
+            alert("Something went wrong during login");
         });
     };
 

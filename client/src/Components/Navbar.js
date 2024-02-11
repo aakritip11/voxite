@@ -1,12 +1,14 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { MdOutlineTravelExplore } from "react-icons/md";
 import {useNavigate} from "react-router-dom";
 
 function Navbar(props){
     const navigate = useNavigate();
+
     const handleHome = () => {
         navigate("/")
     }
+    
     const handleAbout = () => {
         navigate("/About")
     }
@@ -22,6 +24,7 @@ function Navbar(props){
     const handleAccount = () => {
         navigate("/AccountDetails")
     }
+    
     const handleLogoutClick = () => {
         fetch("http://localhost:3001/logout",{
             method:"GET",
@@ -34,6 +37,19 @@ function Navbar(props){
             navigate("/");
         })
     }
+
+    useEffect(() => { 
+        fetch("http://localhost:3001/checkLoginStatus", {
+            method:"GET",
+            credentials: "include",
+        }).then((response) => response.json())
+        .then((data) => {
+          if (data.loggedIn) { 
+            props.setUsername(data.username);
+          }
+        }) 
+    },[props.username])
+
     return(
         <div className="navbar">
             <div className="navbar--header">
@@ -55,7 +71,7 @@ function Navbar(props){
                             <div className="navbar--item" onClick={handleLogin}>Login</div>
                         )}
                     </div>
-                    <button className="navbar--btn">BOOK NOW</button>
+                    <button className="navbar--btn" onClick={handleTours}>BOOK NOW</button>
                 </div>
             </div>
         </div>

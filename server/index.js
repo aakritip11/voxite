@@ -5,7 +5,6 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken")
-const multer = require('multer');
 
 const JWT_SECRET = "asdfghjnbvcxsrtyuiopppjhgcxm/poiuytrewqasdfghjlmnbvcx/poiuytrewqafghjklmnbvcxz";
 const mongoUrl = "mongodb+srv://voxite:voxite@cluster0.zmpxztq.mongodb.net/?retryWrites=true&w=majority";
@@ -16,8 +15,10 @@ mongoose.connect(mongoUrl, {
 }).then(() => {console.log("Connect to database");}).catch((e) => console.log("Error", e));
 
 require("./models/UserDetails")
-const Post=require('./models/Post');
-const User = mongoose.model("AccountInfo");
+require("./models/BookingDetails")
+
+const User = mongoose.model("UserInfo");
+const Booking = mongoose.model("BookingInfo");
 
 index.use(express.json());
 index.use(cors())
@@ -41,8 +42,8 @@ index.use((req, res, next) => {
 
 const path = require('path');
 
-index.post("/register", async (req, res) => {
-  const { name, email, phone, password, cpassword } = req.body;
+index.post("/signup", async (req, res) => {
+  const { name, email, phone, country, city, password, cpassword } = req.body;
   console.log(req.body);
   const encryptedPassword = await bcrypt.hash(password
     , 10);
@@ -55,6 +56,8 @@ index.post("/register", async (req, res) => {
           name,
           email,
           phone,
+          country,
+          city,
           password: encryptedPassword,
           cpassword: encryptedPassword, 
       });
@@ -85,7 +88,7 @@ index.post("/login", async (req, res) => {
       maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
     });
    
-    res.json({ token, username: user.name });
+    res.json({ token, username: user.name, userphone: user.phone, usercountry: user.country, usercity: user.city });
 
   } catch (error) {
     console.error(error);
@@ -105,7 +108,7 @@ index.get('/checkLoginStatus', async (req, res) => {
 
         res.json({ loggedIn: true, username: user.name , email: user.email});
       } else {
-        res.json({ loggedIn: true, username: "Sakshi Patil" });
+        res.json({ loggedIn: true, username: "voxite" });
       }
     } else {
       res.json({ loggedIn: false, username: "" });
@@ -134,7 +137,7 @@ index.post("/userdata", async (req, res) => {
     console.error(error);
     res.status(500).send({ status: "error", message: "Something went wrong" });
   }
-});
+})
 
 index.get('/logout', (req, res) => {
   res.cookie("token", "", {
@@ -142,6 +145,23 @@ index.get('/logout', (req, res) => {
     expires: new Date(0)
   }).send();
 })
+
+index.post('/bookings', async (req, res) => {
+  const { tourName, location, duration, numberOfPersons, fees } = req.body;
+  try {
+    const booking = await Booking.create({
+      tourName,
+      location,
+      duration,
+      numberOfPersons,
+      fees
+    });
+
+    res.send({ status: "ok"}); // Return the token along with the response
+  } catch (error) {
+    res.send({ status: "error" });
+  }
+});
 
 
 const port = process.env.PORT || 3001;

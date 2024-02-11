@@ -39,6 +39,10 @@ function TourDetails(props){
                 <button className="tourdetails--btn" onClick={() => navigate('/tours')}>
                     BACK 
                 </button>
+                
+                <button className="tourdetails--btn" onClick={() => navigate(`/booknow/${id}`)}>
+                    BOOK NOW
+                </button>
             </div>
         </div>
     );

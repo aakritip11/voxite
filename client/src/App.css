@@ -308,12 +308,6 @@ body{
 }
 
 /* about */
-.about{
-  background-image: url('Assets/img23.jpg');
-  background-size: cover;  
-  background-position: center;
-}
-
 .about--container{
   width: 80%;
   padding: 8rem 1.5rem 3rem;
@@ -856,6 +850,35 @@ input[type="password"] {
   border: 1px solid var(--whiteColor);
 }
 
+input[type="person"] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 0.6rem;
+  border-radius: 3rem;
+  border: 1px solid var(--whiteColor);
+}
+
+.radio-buttons {
+  display: flex;
+  gap: 1rem; /* Adjust the gap as per your preference */
+}
+
+.radio-buttons input[type="radio"] {
+  align-items: center;
+  border-radius: 3rem;
+  border: 1px solid var(--whiteColor);
+}
+
+input[type="number"] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 0.6rem;
+  border-radius: 3rem;
+  border: 1px solid var(--whiteColor);
+}
+
 input[type="email"] {
   display: flex;
   justify-content: center;
@@ -868,4 +891,322 @@ input[type="email"] {
 input::placeholder {
   color: var(--blackColor);
   opacity: 0.5;
+}
+
+/* accountdetails */
+.accountdetails--container{
+  width: 100%;
+  height: 100%;
+  margin-top: 2rem;
+}
+
+.accountdetails{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.accountdetails--rightsection{
+  display: flex;
+  flex-direction: column;
+  margin: 2rem 11rem;
+}
+
+.accountdetails--left{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--whiteColorDeam);
+  background-color: var(--cardBG);
+  padding: 3%;
+  border-radius: 15px;
+  border: 1px solid var(--whiteColorDeam);
+  box-shadow: 7px 7px 1px 1px;
+}
+
+.accountdetails--left:hover{
+  background-color: var(--cardHover);
+}
+
+.accountdetails--leftusername{
+  color: var(--textColor);
+}
+
+.accountdetails--profilepic{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100vh;
+}
+
+.accountdetails--profilepic img{
+  width: 50px;
+  height: 50px;
+  border: 1px solid var(--blackColor);
+  border-radius: 50%;
+}
+
+.accountdetails--leftusername{
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.accountdetails--uploadbtn{
+  border-radius: 3rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-color: var(--whiteColorDeam);
+  padding: 0.6rem 1.5rem;
+  font-weight: 600;
+  width: max-content;
+  background-color: var(--PrimaryColor);
+  color: white;
+  cursor: pointer;
+}
+
+.accountdetails--uploadbtn:hover{
+  background-color: var(--SecondaryColor);
+}
+
+.accountdetails--middle{
+  display: flex;
+  flex-direction: column;
+  margin-top: 3rem;
+  padding: 2rem;
+  color: var(--whiteColorDeam);
+  background-color: var(--cardBG);
+  border: 1px solid var(--whiteColorDeam);
+  border-radius: 15px;
+  box-shadow: 2px 2px 1px 1px; 
+}
+
+.accountdetails--middle:hover{
+  background-color: var(--cardHover);
+}
+
+.accountdetails--info{
+  margin: 0.5rem;
+}
+
+.accountdetails--tiletitle{
+  font-size: 1.2rem;
+  color: var(--blackColor);
+  margin-top: 1rem;
+  font-weight: 500;
+}
+
+.accountdetails--tile{
+  border: 1px solid var(--blackColor);
+  border-radius: 10px;
+  padding: 0.5rem 2rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.accountdetails--tilename{
+  font-size: 12px;
+  color: var(--blackColor);
+}
+
+.accountdetails--deactivate{
+  margin-top: 2rem;
+  padding: 2rem;
+  color: var(--blackColor);
+  border: 1px solid var(--blackColor);
+  border-radius: 15px;
+  box-shadow: 1px 1px 1px 1px;
+}
+
+.accountdetails--de{
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--blackColor);
+}
+
+.accountdetails--deactivatemsg{
+  color: var(--textColor);
+}
+
+.accountdetails--debtn{
+  padding: 0.6rem 1.5rem;
+  margin-top: 1rem;
+  width: max-content;
+  border-radius: 3rem;
+  border: none;
+  outline: none;
+  color: var(--whiteColor);
+  border-color: var(--whiteColorDeam);
+  background-color: var(--PrimaryColor);
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.accountdetails--debtn:hover{
+  background-color: var(--SecondaryColor);
+}
+
+/* booknow */
+.booknow{
+  margin: 4rem;
+  color: var(--blackColor);
+}
+
+.booknow--Div{
+  margin: 3rem;
+  background-color: var(--whiteColorDeam);
+  padding: 1.5rem 1.5rem;
+  border-radius: 2rem;
+}
+
+.booknow--container{
+  background-color: var(--cardBG);
+  color: var(--textColor);
+  padding: 1.5rem 3rem;
+  margin: auto;
+  border-radius: 2rem;
+}
+
+.booknow--container:hover{
+  background-color: var(--cardHover);
+}
+
+.booknow--firstpart{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.booknow--firstpartfirst{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 7rem;
+}
+
+.booknow--detailsdestTitle{
+  color: var(--blackColor);
+  font-size: 1.25rem;
+}
+
+.booknow--detailsimgSrc{
+  border-radius: 3rem;
+  background-color: var(--cardHover);
+  width: 20rem;
+  height: 20rem;
+}
+
+.booknow--detailsimgSrc:hover{
+  background-color: var(--cardBG);
+}
+
+.booknow--detailsimgSrc img{
+  width: 20rem;
+  height: 20rem;
+  padding: 1rem;
+  border-radius: 3rem;
+}
+
+/* confirmbook */
+.confirmbook--container{
+  margin: 4rem;
+  color: var(--blackColor);
+}
+
+.confirmbook{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.confirmbook--rightsection{
+  display: flex;
+  flex-direction: column;
+  margin: 2rem 11rem;
+}
+
+.confirmbook--leftusername{
+  font-size: 20px;
+  color: var(--textColor);
+  font-weight: 700;
+}
+
+.confirmbook--middle{
+  display: flex;
+  flex-direction: column;
+  margin-top: 3rem;
+  padding: 3rem;
+  color: var(--whiteColorDeam);
+  background-color: var(--cardBG);
+  border: 1px solid var(--whiteColorDeam);
+  border-radius: 15px;
+  box-shadow: 2px 2px 1px 1px; 
+}
+
+.confirmbook--middle:hover{
+  background-color: var(--cardHover);
+}
+
+.confirmbook--info{
+  margin: 0.5rem;
+}
+
+.confirmbook--tiletitle{
+  font-size: 1.2rem;
+  color: var(--blackColor);
+  margin-top: 1rem;
+  font-weight: 500;
+}
+
+.confirmbook--tile{
+  border: 1px solid var(--blackColor);
+  border-radius: 10px;
+  padding: 0.5rem 2rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.confirmbook--tilename{
+  font-size: 12px;
+  color: var(--blackColor);
+}
+
+.confirmbook--deactivate{
+  margin-top: 2rem;
+  padding: 2rem;
+  color: var(--blackColor);
+  border: 1px solid var(--blackColor);
+  border-radius: 15px;
+  box-shadow: 1px 1px 1px 1px;
+}
+
+.confirmbook--de{
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--blackColor);
+}
+
+.confirmbook--deactivatemsg{
+  color: var(--textColor);
+}
+
+.confirmbook--debtn{
+  padding: 0.6rem 1.5rem;
+  margin-top: 1rem;
+  width: max-content;
+  border-radius: 3rem;
+  border: none;
+  outline: none;
+  color: var(--whiteColor);
+  border-color: var(--whiteColorDeam);
+  background-color: var(--PrimaryColor);
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.confirmbook--debtn:hover{
+  background-color: var(--SecondaryColor);
 }
